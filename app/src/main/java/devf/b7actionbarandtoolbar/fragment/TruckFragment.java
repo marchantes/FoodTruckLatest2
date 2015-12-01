@@ -2,20 +2,25 @@ package devf.b7actionbarandtoolbar.fragment;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.support.v7.widget.RecyclerView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import devf.b7actionbarandtoolbar.R;
+import devf.b7actionbarandtoolbar.SpecFoodTruck;
 import devf.b7actionbarandtoolbar.adapters.TruckAdapter;
+import devf.b7actionbarandtoolbar.interfaces.MyOwnListener;
 import devf.b7actionbarandtoolbar.model.TruckFood;
 
 /**
@@ -28,6 +33,8 @@ public class TruckFragment extends Fragment {
     private RecyclerView mRecyclerView2;
 
     private List<TruckFood> truckFoodList;
+
+    private String TAG = "¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿  =   ";
 
 
 
@@ -75,9 +82,34 @@ public class TruckFragment extends Fragment {
         TruckAdapter truckAdapter = new TruckAdapter(getActivity(), truckFoodList);
 
 
-        // ***** NULL POINT EXEPTION
+        // *****
         mRecyclerView2.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
         mRecyclerView2.setAdapter(truckAdapter);
+        truckAdapter.setOnItemClickListener(new MyOwnListener() {
+            @Override
+            public void onItemClick(int position, View view, TruckFood truckFood) {
+
+                String mTypeFood = truckFood.getTtypefood();
+                String mName = truckFood.getTname();
+                int mImagez = truckFood.getTimage();
+
+
+                Intent intentActivity = new Intent(getActivity(), SpecFoodTruck.class);
+
+
+
+                intentActivity.putExtra("my_key", mName);
+                intentActivity.putExtra("my_keyz", mImagez);
+                intentActivity.putExtra("my_keyz2", mTypeFood);
+
+                startActivity(intentActivity);
+
+
+
+                Log.e(TAG, " FUC " + position + "  " + mName);
+
+            }
+        });
 
 
 
@@ -105,7 +137,7 @@ public class TruckFragment extends Fragment {
 
         for(int i=0; i<12; i++){
 
-            foodTruckers.add(new TruckFood("Best", R.drawable.devf_small_black, "Jack in the Box", 8, "Fast Food"));
+            foodTruckers.add(new TruckFood("Best", R.drawable.jack_logo, "Jack in the Box", 8, "Fast Food"));
         }
 
         return foodTruckers;

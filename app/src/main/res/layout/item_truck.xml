@@ -20,8 +20,8 @@
 
         <ImageView
             android:id="@+id/truck_image"
-            android:layout_width="134dp"
-            android:layout_height="201dp"
+            android:layout_width="65dp"
+            android:layout_height="100dp"
             android:contentDescription="Image of Truck"
             android:paddingLeft="16dp"
             />
@@ -63,10 +63,13 @@
 
     </LinearLayout>
 
+
+    <!--
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="@android:color/black" />
+        -->
 
 
 </LinearLayout>

@@ -16,7 +16,13 @@ public class favorites extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_favorites);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+
+        toolbar.setTitle("Configuracion");
+
         setSupportActionBar(toolbar);
+
+        // COMMENTED, CRASH
+//        getActionBar().setTitle("Configuracion");
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {

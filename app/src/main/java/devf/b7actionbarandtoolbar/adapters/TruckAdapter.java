@@ -8,10 +8,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import java.util.List;
 
 import devf.b7actionbarandtoolbar.R;
+import devf.b7actionbarandtoolbar.interfaces.MyOwnListener;
 import devf.b7actionbarandtoolbar.model.TruckFood;
 
 /**
@@ -22,6 +24,9 @@ public class TruckAdapter extends RecyclerView.Adapter<TruckAdapter.TruckViewHol
 
     private List<TruckFood> mFoodTruck;
     private LayoutInflater mInflater;
+    private MyOwnListener myOwnListener;
+
+
 
     private String TAG = " *************** THIS IS IT = ";
 
@@ -33,12 +38,16 @@ public class TruckAdapter extends RecyclerView.Adapter<TruckAdapter.TruckViewHol
         this.mFoodTruck = truckFoods;
     }
 
+    public void setOnItemClickListener(MyOwnListener myOwnListener) {
+        this.myOwnListener = myOwnListener;
+    }
+
 
     @Override
     public TruckViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemVIew = mInflater.inflate(R.layout.item_truck, parent, false);
 
-        TruckViewHolder viewHolder = new TruckViewHolder(itemVIew);
+        TruckViewHolder viewHolder = new TruckViewHolder(itemVIew, R.id.truck_image, R.id.truck_name, R.id.truck_type);
 
         return viewHolder;
     }
@@ -79,8 +88,20 @@ public class TruckAdapter extends RecyclerView.Adapter<TruckAdapter.TruckViewHol
         private int Timage;
         private String Tcomment;
 
-        public TruckViewHolder(View itemView) {
+        private TextView Tname2;
+        private int Tstars2;
+        private TextView Ttypefood2;
+        private ImageView Timage2;
+        private TextView Tcomment2;
+
+        public TruckViewHolder(View itemView, int idImage, int idText1, int idText2) {
             super(itemView);
+
+            itemView.setOnClickListener(this);
+
+            Timage2 = (ImageView) itemView.findViewById(R.id.truck_image);
+            Tname2 = (TextView) itemView.findViewById(R.id.truck_name);
+            Ttypefood2 = (TextView) itemView.findViewById(R.id.truck_type);
         }
 
 
@@ -88,27 +109,33 @@ public class TruckAdapter extends RecyclerView.Adapter<TruckAdapter.TruckViewHol
         @Override
         public void onClick(View v) {
 
+            TruckFood truckFood = mFoodTruck.get(getAdapterPosition());
+
+            myOwnListener.onItemClick(getAdapterPosition(),v, truckFood);
+
         }
 
 
         public void setTcomment(String tcomment) {
-            this.Tcomment = tcomment;
+
+//            this.Tcomment = tcomment;
         }
 
         public void setTimage(int timage) {
-            this.Timage = timage;
+            this.Timage2.setImageResource(timage);
         }
 
         public void setTname(String tname) {
-            this.Tname = tname;
+            this.Tname2.setText(tname);
         }
 
         public void setTstars(int tstars) {
-            Tstars = tstars;
+
+//            Tstars = tstars;
         }
 
         public void setTtypefood(String ttypefood) {
-            this.Ttypefood = ttypefood;
+            this.Ttypefood2.setText(ttypefood);
         }
     }
 }

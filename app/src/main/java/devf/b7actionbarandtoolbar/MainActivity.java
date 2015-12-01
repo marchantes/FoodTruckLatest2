@@ -39,7 +39,7 @@ import devf.b7actionbarandtoolbar.interfaces.OnSelectedListener;
 import devf.b7actionbarandtoolbar.model.Truck;
 import devf.b7actionbarandtoolbar.fragment.CreateFragment;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener, OnSelectedListener, OnMapReadyCallback, MyOwnListener {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener, OnSelectedListener, OnMapReadyCallback {
 
     private DrawerLayout mDrawerLayout;
 
@@ -113,13 +113,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                         stringPasser = "a";
 
+
+                        // INTENT ENTER, commented out
+                        /*
                         fragment = new FragmentDynamic();
                        replacerFragment(fragment, stringPasser);
+                        */
+
+                        fragment = new TruckFragment();
+                        replacerFragment(fragment, stringPasser);
 
 
 
 
-                        Toast.makeText(MainActivity.this, R.string.action_call, Toast.LENGTH_SHORT).show();
+
+
+
+                        Toast.makeText(MainActivity.this, "Favoritos", Toast.LENGTH_SHORT).show();
                         break;
                     case R.id.action_search:
 
@@ -133,24 +143,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         replacerFragment(fragment, stringPasser);
                         */
 
-
-                        // FRAGMENT ENTER, commented out
-                        /*
-
                         Intent intent = new Intent(MainActivity.this, favorites.class);
                         startActivity(intent);
 
-                        */
-
-                        fragment = new TruckFragment();
-                        replacerFragment(fragment, stringPasser);
 
 
 
-//
 
-
-                        Toast.makeText(MainActivity.this, "Truck Fragment", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity.this, "Configuracion", Toast.LENGTH_SHORT).show();
                         break;
                     case R.id.action_map:
 
@@ -160,7 +160,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         Fragment frog = getSupportFragmentManager().findFragmentByTag(stringPasser);
                         if(frog != null){
 
-                            Toast.makeText(MainActivity.this, "Rapper", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(MainActivity.this, "Map Activity", Toast.LENGTH_SHORT).show();
 
                             transaction2.remove(frog);
                             transaction2.commit();
@@ -339,7 +339,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         FragmentTransaction transactionz = getSupportFragmentManager().beginTransaction();
         transactionz.replace(R.id.container, fragment, xp);
-//        transactionz.addToBackStack(null);
+        transactionz.addToBackStack(null);
         transactionz.commit();
 
 
@@ -452,7 +452,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
 
-
+    // *****************   TROUBLE WITH INTERFACE MYOWNLISTERNR
+ /*
     @Override
     public void onItemClick(View view) {
 
@@ -463,4 +464,5 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 //        if ()
 
     }
+    */
 }

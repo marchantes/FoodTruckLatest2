@@ -44,6 +44,10 @@
         <activity
             android:name=".favorite3"
             android:label="@string/title_activity_favorite3"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".SpecFoodTruck"
+            android:label="@string/title_activity_spec_food_truck"
             android:theme="@style/AppTheme"></activity>
     </application>
 
