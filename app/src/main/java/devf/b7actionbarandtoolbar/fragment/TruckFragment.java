@@ -17,6 +17,9 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
+import devf.b7actionbarandtoolbar.ActTruckComment;
+import devf.b7actionbarandtoolbar.FuckingShit2;
+import devf.b7actionbarandtoolbar.Fucking_shit;
 import devf.b7actionbarandtoolbar.R;
 import devf.b7actionbarandtoolbar.SpecFoodTruck;
 import devf.b7actionbarandtoolbar.adapters.TruckAdapter;
@@ -92,21 +95,35 @@ public class TruckFragment extends Fragment {
                 String mTypeFood = truckFood.getTtypefood();
                 String mName = truckFood.getTname();
                 int mImagez = truckFood.getTimage();
+                int mGradez = truckFood.getTstars();
 
+                // ##### THIS IS WORKING ON
 
-                Intent intentActivity = new Intent(getActivity(), SpecFoodTruck.class);
+//                Intent intentActivity = new Intent(getActivity(), SpecFoodTruck.class);
 
+                  Intent intentActivity = new Intent(getActivity(), FuckingShit2.class);
 
 
                 intentActivity.putExtra("my_key", mName);
                 intentActivity.putExtra("my_keyz", mImagez);
+                intentActivity.putExtra("my_keyz2", mGradez);
+
+                // *********  COMMENTED IMPLEMENT ActTruckComment
+                /*
+                intentActivity.putExtra("my_key", mName);
+                intentActivity.putExtra("my_keyz", mImagez);
                 intentActivity.putExtra("my_keyz2", mTypeFood);
+                */
+
+
+                Log.e(TAG, " ///////////// FUC " );
+
 
                 startActivity(intentActivity);
 
 
 
-                Log.e(TAG, " FUC " + position + "  " + mName);
+
 
             }
         });
@@ -137,7 +154,7 @@ public class TruckFragment extends Fragment {
 
         for(int i=0; i<12; i++){
 
-            foodTruckers.add(new TruckFood("Best", R.drawable.jack_logo, "Jack in the Box", 8, "Fast Food"));
+            foodTruckers.add(new TruckFood("Best", R.drawable.barra_vieja_smallj, "Jack in the Box", 8, "Fast Food"));
         }
 
         return foodTruckers;

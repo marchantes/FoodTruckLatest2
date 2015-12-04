@@ -2,7 +2,8 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/primary">
+    android:background="@color/primary"
+    android:layout_gravity="center">
 
 
     <de.hdodenhof.circleimageview.CircleImageView
@@ -12,7 +13,8 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="41dp"
         android:scaleType="centerCrop"
-        android:src="@drawable/myself" />
+        android:src="@drawable/myself"
+        android:paddingBottom="20dp"/>
 
 
 </FrameLayout>

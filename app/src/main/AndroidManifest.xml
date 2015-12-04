@@ -48,6 +48,12 @@
         <activity
             android:name=".SpecFoodTruck"
             android:label="@string/title_activity_spec_food_truck"
+            android:theme="@style/AppTheme" />
+        <activity android:name=".Settingz" />
+        <activity android:name=".Fucking_shit" />
+        <activity
+            android:name=".FuckingShit2"
+            android:label="@string/title_activity_fucking_shit2"
             android:theme="@style/AppTheme"></activity>
     </application>
 

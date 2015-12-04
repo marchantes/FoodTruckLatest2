@@ -24,7 +24,9 @@ public class TruckAdapter extends RecyclerView.Adapter<TruckAdapter.TruckViewHol
 
     private List<TruckFood> mFoodTruck;
     private LayoutInflater mInflater;
-    private MyOwnListener myOwnListener;
+    private MyOwnListener myOwnListenerx;
+
+    private int currentViewHolder;
 
 
 
@@ -39,7 +41,7 @@ public class TruckAdapter extends RecyclerView.Adapter<TruckAdapter.TruckViewHol
     }
 
     public void setOnItemClickListener(MyOwnListener myOwnListener) {
-        this.myOwnListener = myOwnListener;
+        this.myOwnListenerx = myOwnListener;
     }
 
 
@@ -58,6 +60,10 @@ public class TruckAdapter extends RecyclerView.Adapter<TruckAdapter.TruckViewHol
     public void onBindViewHolder(TruckViewHolder holder, int position) {
         TruckFood truck = mFoodTruck.get(position);
 //        holder.setViewPosition(position);
+
+
+
+        currentViewHolder = position;
 
 
 
@@ -93,6 +99,7 @@ public class TruckAdapter extends RecyclerView.Adapter<TruckAdapter.TruckViewHol
         private TextView Ttypefood2;
         private ImageView Timage2;
         private TextView Tcomment2;
+        private int Tgrade;
 
         public TruckViewHolder(View itemView, int idImage, int idText1, int idText2) {
             super(itemView);
@@ -111,7 +118,7 @@ public class TruckAdapter extends RecyclerView.Adapter<TruckAdapter.TruckViewHol
 
             TruckFood truckFood = mFoodTruck.get(getAdapterPosition());
 
-            myOwnListener.onItemClick(getAdapterPosition(),v, truckFood);
+            myOwnListenerx.onItemClick(getAdapterPosition(),v, truckFood);
 
         }
 
@@ -131,11 +138,19 @@ public class TruckAdapter extends RecyclerView.Adapter<TruckAdapter.TruckViewHol
 
         public void setTstars(int tstars) {
 
-//            Tstars = tstars;
+//            this.Tstars = currentViewHolder;
         }
 
         public void setTtypefood(String ttypefood) {
             this.Ttypefood2.setText(ttypefood);
         }
+
+
+        public void setTgrade(int tgrade) {
+            Tgrade = currentViewHolder;
+        }
     }
+
+
+
 }

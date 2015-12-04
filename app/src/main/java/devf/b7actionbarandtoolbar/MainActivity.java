@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private String TAG = "   ********************** This is it";
 
-    private String stringPasser;
+    private String stringPasser = "b";
 
 
     private ActionBarDrawerToggle mDrawerToggle;
@@ -143,7 +143,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         replacerFragment(fragment, stringPasser);
                         */
 
-                        Intent intent = new Intent(MainActivity.this, favorites.class);
+                        Intent intent = new Intent(MainActivity.this, Settingz.class);
                         startActivity(intent);
 
 
@@ -339,7 +339,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         FragmentTransaction transactionz = getSupportFragmentManager().beginTransaction();
         transactionz.replace(R.id.container, fragment, xp);
-        transactionz.addToBackStack(null);
+//        transactionz.addToBackStack(null);
         transactionz.commit();
 
 
